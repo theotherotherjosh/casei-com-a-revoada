@@ -1,247 +1,264 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Josh Casou com a Revoada</title>
-  
-  <!-- TikTok Pixel Code Start -->
-  <script>
-    !function (w, d, t) {
-      w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
-      var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
-      ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
-  
-      ttq.load('CVT9DG3C77U29KB3QVLG');
-      ttq.page();
-    }(window, document, 'ttq');
-  </script>
-  <!-- TikTok Pixel Code End -->
-  
-  <!-- Meta Pixel Code -->
-  <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1293057448460564');
-    fbq('track', 'PageView');
-  </script>
-  <noscript>
-    <img height="1" width="1" style="display:none"
-         src="https://www.facebook.com/tr?id=1293057448460564&ev=PageView&noscript=1"/>
-  </noscript>
-  <!-- End Meta Pixel Code -->
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Casei com a Revoada</title>
   <style>
-    /* Reset e configurações globais */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-    body, html {
-      width: 100%;
+
+    html, body {
       height: 100%;
-      font-family: Arial, sans-serif;
       overflow: hidden;
+      font-family: Arial, sans-serif;
+      color: white;
+      background-color: black;
     }
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-    /* Vídeo de fundo */
+
+    /* 🎥 Vídeo de fundo local */
     .video-bg {
       position: fixed;
       top: 0;
       left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .video-bg video {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      z-index: -1;
+      filter: brightness(0.4) blur(4px);
+      transform: scale(1.2);
     }
-    /* Container de conteúdo */
-    .content {
+
+    /* 🌑 Vinheta */
+    .vignette-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      background: radial-gradient(
+        circle at center,
+        rgba(0, 0, 0, 0) 40%,
+        rgba(0, 0, 0, 0.5) 100%
+      );
+      z-index: 2;
+    }
+
+    .container {
       position: relative;
-      z-index: 10;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 40px 20px;
+      text-align: center;
+      z-index: 1;
+    }
+
+    /* 🔡 Título espaçado */
+    .top-text {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 25vw;
+      font-size: 1.5rem;
+      text-transform: lowercase;
+      letter-spacing: 1px;
+      margin-top: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .top-text span:hover {
+      transform: scale(1.1);
+    }
+
+    .main-content {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
-      text-align: center;
-      width: 100%;
-      height: 100%;
-      padding-top: 20px;
-      overflow-y: auto;
-    }
-    /* Animação dos ícones e botões */
-    .icon, .listen-button {
-      transition: transform 0.5s ease;
-      cursor: pointer;
-    }
-    .icon:hover, .listen-button:hover {
-      transform: scale(1.1);
-    }
-    /* Versões para desktop e mobile */
-    .desktop {
-      display: block;
-    }
-    .mobile {
-      display: none;
-    }
-    @media screen and (max-width: 768px) {
-      .desktop {
-        display: none;
-      }
-      .mobile {
-        display: block;
-      }
-      body, html {
-        overflow-y: auto;
-      }
-    }
-    /* Estilos para cabeçalho, vinheta, capa, botões e embed */
-    .header img, .vinheta img {
-      width: 100%;
-      height: auto;
-    }
-    .cover {
-      margin: 20px 0;
-      cursor: pointer;
-    }
-    .cover img {
-      max-width: 300px;
-      width: 100%;
-      height: auto;
-    }
-    .buttons-container {
-      display: flex;
-      flex-wrap: wrap;
       justify-content: center;
-      gap: 15px;
-      margin-top: 20px;
+      flex-grow: 1;
     }
-    .buttons-container a {
-      display: inline-block;
+
+    /* 📸 Capa da música */
+    .main-image {
+      width: 300px;
+      max-width: 90vw;
+      border-radius: 20px;
+      margin-top: 60px;
+      margin-bottom: 50px;
+      transition: transform 0.3s ease;
     }
-    .listen-button img {
-      max-width: 250px;
-      width: 100%;
-      height: auto;
+
+    .main-image:hover {
+      transform: scale(1.05);
     }
-    .spotify-embed {
-      margin-top: 20px;
-      max-width: 500px;
-      width: 100%;
+
+   .spotify-icon {
+  margin-top: 40px;
+  transition: transform 0.3s ease;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.spotify-icon:hover {
+  transform: scale(1.2);
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.bottom-text {
+  font-size: 1.2rem;
+  margin-top: 60px; /* 👈 empurra para a parte de baixo da .main-content */
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6vw; /* 👈 gap igual ao do topo */
+}
+
+.bottom-text a {
+  display: flex;
+  gap: 6vw;
+  text-decoration: underline;
+  color: white;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+
+.bottom-text a:hover {
+  transform: scale(1.1);
+}
+
+.bottom-text span {
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.bottom-text span:hover {
+  transform: scale(1.1);
+}
+
+.social-icons {
+  margin-top: 70px;
+  margin-bottom: 10px;
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+
+.social-icons a {
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+}
+
+.social-icon-img {
+  width: 36px; /* ajuste o tamanho aqui se quiser menor ou maior */
+  height: auto;
+  display: block;
+}
+
+
+
+    /* 📱 Responsivo */
+    @media (max-width: 600px) {
+      .top-text {
+        gap: 3vw;
+        font-size: 1.2rem;
+      }
+
+      .main-image {
+        width: 90%;
+      }
+
+      .bottom-text {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Vídeo de fundo -->
-  <!-- Versão Desktop -->
-  <video id="video-desktop" class="video-bg desktop" autoplay loop muted playsinline>
-    <source src="videos/MODELO_0008_VIDEO.mp4" type="video/mp4">
-    Seu navegador não suporta vídeo.
-  </video>
-  <!-- Versão Mobile -->
-  <video id="video-mobile" class="video-bg mobile" autoplay loop muted playsinline>
-    <source src="videos/MODELO-MOBILE_0008_VIDEO-DE-FUNDO.mp4" type="video/mp4">
-    Seu navegador não suporta vídeo.
-  </video>
 
-  <!-- Conteúdo do Site -->
-  <!-- Conteúdo para Desktop -->
-  <div class="content desktop">
-    <!-- Cabeçalho -->
-    <div class="header">
-      <img src="images/MODELO_0006_CABEÇALHO.png" alt="Cabeçalho">
-    </div>
-    <!-- Vinheta -->
-    <div class="vinheta">
-      <img src="images/MODELO_0007_VINHETA.png" alt="Vinheta">
-    </div>
-    <!-- Capa da Música (clicável, direciona para Spotify) -->
-    <div class="cover">
-      <a href="https://open.spotify.com/intl-pt/artist/1LqoE7oZSh8sej4t4G7tIh?si=unzo2wbSSCO16112OyC4Bg" target="_blank">
-        <img src="images/MODELO_0005_CAPA-DA-MÚSICA.png" alt="Capa da Música">
-      </a>
-    </div>
-    <!-- Botões e ícones -->
-    <div class="buttons-container">
-      <!-- Botão "Clique aqui para ouvir" -->
-      <a class="listen-button" href="https://open.spotify.com/intl-pt/artist/1LqoE7oZSh8sej4t4G7tIh?si=unzo2wbSSCO16112OyC4Bg" target="_blank">
-        <img src="images/MODELO_0000_BOTÃO-PARA-OUVIR-A-MÚSICA.png" alt="Ouvir Música">
-      </a>
-      <!-- Ícone do YouTube -->
-      <a class="icon" href="https://www.youtube.com/@sojosh_" target="_blank">
-        <img src="images/MODELO_0001_BOTÃO-YOUTUBE.png" alt="YouTube">
-      </a>
-      <!-- Ícone do Spotify -->
-      <a class="icon" href="https://open.spotify.com/intl-pt/artist/1LqoE7oZSh8sej4t4G7tIh?si=unzo2wbSSCO16112OyC4Bg" target="_blank">
-        <img src="images/MODELO_0002_BOTÃO-SPOTIFY.png" alt="Spotify">
-      </a>
-      <!-- Ícone do TikTok -->
-      <a class="icon" href="https://www.tiktok.com/@sojosh_" target="_blank">
-        <img src="images/MODELO_0003_BOTÃO-TIKTOK.png" alt="TikTok">
-      </a>
-      <!-- Ícone do Instagram -->
-      <a class="icon" href="https://www.instagram.com/sojosh_/" target="_blank">
-        <img src="images/MODELO_0004_BOTÃO-INSTAGRAM.png" alt="Instagram">
-      </a>
-    </div>
-    <!-- Spotify Embed -->
-    <div class="spotify-embed">
-      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/1LqoE7oZSh8sej4t4G7tIh?utm_source=generator" width="100%" height="352" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-    </div>
+  <!-- 🎥 Fundo com vídeo -->
+  <div class="video-bg">
+    <video autoplay muted loop playsinline>
+      <source src="videos/video-bg480.mp4" type="video/mp4" />
+      Seu navegador não suporta vídeo em HTML5.
+    </video>
+    <div class="vignette-overlay"></div>
   </div>
 
-  <!-- Conteúdo para Mobile -->
-  <div class="content mobile">
-    <!-- Cabeçalho (usando o mesmo, mas se houver versão mobile específica, substitua aqui) -->
-    <div class="header">
-      <img src="images/MODELO_0006_CABEÇALHO.png" alt="Cabeçalho">
+  <!-- 🔤 Conteúdo do site -->
+  <div class="container">
+    <div class="top-text">
+      <span>casei</span>
+      <span>com</span>
+      <span>a</span>
+      <span>revoada</span>
     </div>
-    <!-- Vinheta -->
-    <div class="vinheta">
-      <img src="images/MODELO_0007_VINHETA.png" alt="Vinheta">
-    </div>
-    <!-- Capa da Música (clicável) -->
-    <div class="cover">
-      <a href="https://open.spotify.com/intl-pt/artist/1LqoE7oZSh8sej4t4G7tIh?si=unzo2wbSSCO16112OyC4Bg" target="_blank">
-        <img src="images/MODELO-MOBILE_0005_CAPA-DA-MÚSICA.png" alt="Capa da Música Mobile">
-      </a>
-    </div>
-    <!-- Botões e ícones para mobile -->
-    <div class="buttons-container">
-      <!-- Botão "Clique aqui para ouvir" -->
-      <a class="listen-button" href="https://open.spotify.com/intl-pt/artist/1LqoE7oZSh8sej4t4G7tIh?si=unzo2wbSSCO16112OyC4Bg" target="_blank">
-        <img src="images/MODELO-MOBILE_0000_BOTÃO-PARA-OUVIR-A-MÚSICA.png" alt="Ouvir Música Mobile">
-      </a>
-      <!-- Ícone do YouTube -->
-      <a class="icon" href="https://www.youtube.com/@sojosh_" target="_blank">
-        <img src="images/MODELO-MOBILE_0001_BOTÃO-YOUTUBE.png" alt="YouTube Mobile">
-      </a>
-      <!-- Ícone do Spotify -->
-      <a class="icon" href="https://open.spotify.com/intl-pt/artist/1LqoE7oZSh8sej4t4G7tIh?si=unzo2wbSSCO16112OyC4Bg" target="_blank">
-        <img src="images/MODELO-MOBILE_0002_BOTÃO-SPOTIFY.png" alt="Spotify Mobile">
-      </a>
-      <!-- Ícone do TikTok -->
-      <a class="icon" href="https://www.tiktok.com/@sojosh_" target="_blank">
-        <img src="images/MODELO-MOBILE_0003_BOTÃO-TIKTOK.png" alt="TikTok Mobile">
-      </a>
-      <!-- Ícone do Instagram -->
-      <a class="icon" href="https://www.instagram.com/sojosh_/" target="_blank">
-        <img src="images/MODELO-MOBILE_0004_BOTÃO-INSTAGRAM.png" alt="Instagram Mobile">
-      </a>
-    </div>
-    <!-- Spotify Embed -->
-    <div class="spotify-embed">
-      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/1LqoE7oZSh8sej4t4G7tIh?utm_source=generator" width="100%" height="352" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-    </div>
+
+    <div class="main-content">
+  <img src="images/CAPA-DA-MÚSICA.png" alt="Capa da música" class="main-image" />
+
+  <a 
+    href="https://open.spotify.com/intl-pt/track/1V0aO4oYY7R39h4gHrqGxD?si=239af5fbc4de4c08" 
+    class="spotify-icon" 
+    target="_blank" 
+    aria-label="Ouça no Spotify"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 168 168" fill="white">
+      <path d="M84,0C37.7,0,0,37.7,0,84s37.7,84,84,84s84-37.7,84-84S130.3,0,84,0z M122.1,120.9
+        c-1.4,2.3-4.5,3-6.8,1.5c-18.7-11.5-42.3-14.1-70.2-7.7c-2.6,0.6-5.3-1-5.9-3.6c-0.6-2.6,1-5.3,3.6-5.9
+        c30.8-6.9,57.5-4,78.1,8.6C122.9,115.2,123.5,118.5,122.1,120.9z M132.1,102.3c-1.8,2.9-5.6,3.8-8.5,2
+        c-21.5-13.1-54.3-16.9-79.7-9.2c-3.2,1-6.6-0.8-7.5-4c-1-3.2,0.8-6.6,4-7.5c29.5-9.1,66.5-5,91.1,10.3
+        C132.9,95.4,133.9,99.4,132.1,102.3z M133.9,83.4c-25.5-15.2-67.8-16.6-92.3-9.2c-3.8,1.2-7.8-0.9-9-4.7
+        c-1.2-3.8,0.9-7.8,4.7-9c28.4-8.7,76.2-7.2,105.6,11c3.4,2,4.5,6.4,2.5,9.8C143.5,84.2,137.9,85.8,133.9,83.4z"/>
+    </svg>
+  </a>
+
+  <div class="bottom-text">
+    <a 
+      href="https://open.spotify.com/intl-pt/track/1V0aO4oYY7R39h4gHrqGxD?si=239af5fbc4de4c08" 
+      target="_blank"
+    >
+      <span>clique</span><span>aqui</span>
+    </a>
+    <span>e</span><span>ouça</span><span>agora</span>
   </div>
+
+  <div class="social-icons">
+    <a href="https://www.instagram.com/sojosh_/" target="_blank" aria-label="Instagram">
+      <img src="images/insta.svg" alt="Instagram" class="social-icon-img" />
+    </a>
+    <a href="https://www.tiktok.com/@sojosh_" target="_blank" aria-label="TikTok">
+      <img src="images/tik tok.svg" alt="TikTok" class="social-icon-img" />
+    </a>
+    <a href="https://www.youtube.com/@sojosh_" target="_blank" aria-label="YouTube">
+      <img src="images/youtube.svg" alt="YouTube" class="social-icon-img" />
+    </a>
+  </div>
+</div>
+
+
+
 </body>
 </html>
